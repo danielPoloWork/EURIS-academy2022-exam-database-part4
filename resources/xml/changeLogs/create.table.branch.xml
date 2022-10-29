@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="create-table-branch-0001" author="danielPolo">
+        <comment>Create table Branch</comment>
+
+        <createTable tableName="Branch">
+            <column name="uuid" type="CHAR(36)">
+                <constraints primaryKey="true" primaryKeyName="pkBranch"/>
+            </column>
+            <column name="branchCode" type="CHAR(12)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="branchCode" type="CHAR(12)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="country" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dateCreation" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dateUpdate" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="Branch"/>
+        </rollback>
+
+    </changeSet>
+</databaseChangeLog>
