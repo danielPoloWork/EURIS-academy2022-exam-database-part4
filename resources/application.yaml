@@ -1,0 +1,22 @@
+server:
+    port: 8080
+spring:
+    datasource:
+        url: jdbc:mysql://localhost:3306/SportingGoodsChainCompany
+        driver: = com.mysql.cj.jdbc.Driver
+        username: root
+        password: password
+    liquibase:
+        change-log: classpath:/xml/change.log.xml
+    #Get rid of SpringPhysicalNamingStrategy
+    jpa:
+        hibernate:
+            naming:
+                implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+            properties:
+                hibernate:
+                    physical_naming_strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+                    globally_quoted_identifiers: true
+                    #Get rid of org.hibernate.LazyInitializationException: could not initialize proxy
+                    enable_lazy_load_no_trans: true
