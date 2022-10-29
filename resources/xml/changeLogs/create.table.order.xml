@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="create-table-order-0001" author="danielPolo">
+        <comment>Create table Order</comment>
+
+        <createTable tableName="Order">
+            <column name="uuid" type="CHAR(36)">
+                <constraints primaryKey="true" primaryKeyName="pkOrder"/>
+            </column>
+            <column name="uuidEmployee" type="CHAR(36)">
+                <constraints referencedTableName="Employee"
+                             referencedColumnNames="uuid"
+                             foreignKeyName="fkOrderEmployee"
+                             nullable="false"/>
+            </column>
+            <column name="uuidProduct" type="CHAR(36)">
+                <constraints referencedTableName="Product"
+                             referencedColumnNames="uuid"
+                             foreignKeyName="fkOrderProduct"
+                             nullable="false"/>
+            </column>
+            <column name="orderCode" type="CHAR(12)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="orderDate" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dateCreation" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dateUpdate" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="Order"/>
+        </rollback>
+
+    </changeSet>
+</databaseChangeLog>
