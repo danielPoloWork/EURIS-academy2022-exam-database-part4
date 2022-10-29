@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="create-table-product-0001" author="danielPolo">
+        <comment>Create table Product</comment>
+
+        <createTable tableName="Product">
+            <column name="uuid" type="CHAR(36)">
+                <constraints primaryKey="true" primaryKeyName="pkProduct"/>
+            </column>
+            <column name="ProductCode" type="CHAR(12)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(1000)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="netPrice" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="grossPrice" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dateCreation" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dateUpdate" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="Product"/>
+        </rollback>
+
+    </changeSet>
+</databaseChangeLog>
